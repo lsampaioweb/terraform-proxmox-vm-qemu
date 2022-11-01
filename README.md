@@ -1,5 +1,5 @@
 # terraform-proxmox-ubuntu-22-04-module
-Repository of a Terraform module to create an Ubuntu 22.04 virtual machine (server or desktop) on Proxmox VE.
+Repository of a Terraform module to create an Ubuntu 22.04 virtual machine (server or desktop) on Proxmox VE. This is supposed to be used as a git submodule for your terraform project.
 
 Run these commands on the Proxmox node (just once and on any node):
 ```bash
@@ -46,7 +46,43 @@ Run these commands on the computer that is running Terraform:
     source ~/.bashrc  
     unlock-keyring
 
-  05 - Run Terraform to create the VM.
+  05 - Create the necessary folders and files.
+    mkdir modules
+    cd modules
+    git submodule add https://github.com/lsampaioweb/terraform-proxmox-ubuntu-22-04-module.git proxmox-ubuntu-22-04
+
+    cd ..
+    mkdir stagging
+    mkdir production
+
+    cd stagging # Repeat these steps for the production folder.
+    nano providers.tf
+    terraform {
+      required_providers {
+        proxmox = {
+          source  = "Telmate/proxmox"
+          version = "2.9.11"
+        }
+      }
+    }
+
+    provider "proxmox" {
+      pm_api_url      = "https://proxmoxurl:8006/api2/json"
+      pm_api_token_id = "terraform@pve!terraform"
+    }
+
+    cd ..
+    nano main.tf
+    module "proxmox-ubuntu-22-04" {
+      source = "../modules/proxmox-ubuntu-22-04"
+
+      clone       = "ubuntu-22-04-server-raw"
+      name        = "ubuntu-22-04-server-raw-vm-stagging"
+      description = "Ubuntu 22.04 VM with bare minimum settings"
+      pool        = "Stagging"
+    }
+
+  06 - Run Terraform to create the VM.
     cd terraform/{stagging or production}
     terraform init
 

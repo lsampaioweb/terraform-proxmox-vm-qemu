@@ -1,9 +1,11 @@
 resource "proxmox_vm_qemu" "main" {
+  # https://registry.terraform.io/providers/Telmate/proxmox/latest/docs/resources/vm_qemu
+
   # General
   target_node = var.target_node
   name        = var.name
   vmid        = var.vmid
-  desc        = var.desc
+  desc        = var.description
   onboot      = var.onboot
   oncreate    = var.oncreate
   pool        = var.pool

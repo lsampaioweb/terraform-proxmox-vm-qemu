@@ -2,8 +2,5 @@
 *.terraform*
 *.tfstate*
 
-# SSH Keys should not be committed to Git.
-*.pem
-
 # MacOSX files.
 .DS_Store
