@@ -1,3 +1,9 @@
+variable "os_type" {
+  description = "Which provisioning method to use, based on the OS type. Options: ubuntu, centos, cloud-init."
+  type        = string
+  default     = "ubuntu"
+}
+
 variable "clone" {
   description = "The base VM from which to clone to create the new VM. Note that clone is mutually exclussive with pxe and iso modes."
   type        = string

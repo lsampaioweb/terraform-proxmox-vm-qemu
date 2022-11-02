@@ -10,12 +10,6 @@ variable "cores" {
   default     = 2
 }
 
-variable "vcpus" {
-  description = "The number of vCPUs plugged into the VM when it starts. If 0, this is set automatically by Proxmox to sockets * cores."
-  type        = number
-  default     = 0
-}
-
 variable "cpu" {
   description = "The CPU type to emulate. Defaults to host."
   type        = string
