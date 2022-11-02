@@ -59,8 +59,8 @@ resource "proxmox_vm_qemu" "main" {
   }
 
   # High Availability
-  hastate = var.hastate
   hagroup = var.hagroup
+  hastate = var.hastate
 
   lifecycle {
     ignore_changes = [
