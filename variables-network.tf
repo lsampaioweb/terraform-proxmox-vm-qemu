@@ -13,7 +13,7 @@ variable "network_bridge" {
 variable "network_tag" {
   description = "The VLAN tag to apply to packets on this device. -1 disables VLAN tagging."
   type        = number
-  default     = 0
+  default     = -1
 }
 
 variable "network_firewall" {
