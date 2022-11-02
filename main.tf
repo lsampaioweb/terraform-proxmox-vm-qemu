@@ -11,6 +11,7 @@ resource "proxmox_vm_qemu" "main" {
   pool        = var.pool
 
   # Clone
+  os_type      = var.os_type
   clone        = var.clone
   full_clone   = var.full_clone
   force_create = var.force_create
@@ -30,7 +31,6 @@ resource "proxmox_vm_qemu" "main" {
   # CPU
   sockets = var.sockets
   cores   = var.cores
-  vcpus   = var.vcpus
   cpu     = var.cpu
 
   # Memory
@@ -64,7 +64,7 @@ resource "proxmox_vm_qemu" "main" {
 
   lifecycle {
     ignore_changes = [
-      desc,
+      ciuser,
     ]
   }
 
