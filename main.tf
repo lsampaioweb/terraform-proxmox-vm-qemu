@@ -72,6 +72,6 @@ resource "proxmox_vm_qemu" "main" {
     working_dir = local.path_ansible_scripts
 
     # On every run the IP will be different, so don't check it.
-    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook provision.yml --extra-vars 'host=${self.ssh_host} hostname=${self.name}'"
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook provision.yml --extra-vars 'host=${self.ssh_host} password_id=${self.clone} hostname=${self.name}'"
   }
 }
