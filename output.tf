@@ -1,11 +1,19 @@
+output "vm_target_node" {
+  value = proxmox_vm_qemu.main.target_node
+}
+
 output "vm_id" {
-  value = proxmox_vm_qemu.main.*.id
+  value = proxmox_vm_qemu.main.id
 }
 
 output "vm_name" {
-  value = proxmox_vm_qemu.main.*.name
+  value = proxmox_vm_qemu.main.name
 }
 
-output "ipv4" {
-  value = proxmox_vm_qemu.main.*.default_ipv4_address
+output "vm_ipv4" {
+  value = proxmox_vm_qemu.main.default_ipv4_address
+}
+
+output "vm_macaddr" {
+  value = proxmox_vm_qemu.main.network[0].macaddr
 }
