@@ -22,10 +22,16 @@ variable "qemu_os" {
   default     = "l26"
 }
 
+variable "numa" {
+  description = "Whether to enable Non-Uniform Memory Access in the guest."
+  type        = bool
+  default     = false
+}
+
 variable "hotplug" {
   description = "Comma delimited list of hotplug features to enable. Options: network, disk, cpu, memory, usb. Set to 0 to disable hotplug."
   type        = string
-  default     = "disk,network"
+  default     = "disk,network,cpu"
 }
 
 variable "scsihw" {

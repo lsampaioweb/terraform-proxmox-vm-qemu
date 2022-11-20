@@ -21,6 +21,7 @@ resource "proxmox_vm_qemu" "main" {
   boot    = var.boot
   agent   = var.agent
   qemu_os = var.qemu_os
+  numa    = var.numa
   hotplug = var.hotplug
   scsihw  = var.scsihw
   vga {
@@ -29,9 +30,10 @@ resource "proxmox_vm_qemu" "main" {
   }
 
   # CPU
+  cpu     = var.cpu
   sockets = var.sockets
   cores   = var.cores
-  cpu     = var.cpu
+  vcpus   = var.vcpus
 
   # Memory
   memory  = var.memory
