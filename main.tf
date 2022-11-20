@@ -68,6 +68,7 @@ resource "proxmox_vm_qemu" "main" {
     ignore_changes = [
       ciuser,
       target_node,
+      pool,
     ]
   }
 
