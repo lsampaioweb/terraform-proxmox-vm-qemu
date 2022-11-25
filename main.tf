@@ -78,4 +78,12 @@ resource "proxmox_vm_qemu" "main" {
     # On every run the IP will be different, so don't check it.
     command = "ansible-playbook provision.yml -i ${self.ssh_host}, --extra-vars 'password_id=${self.clone} hostname=${self.name}'"
   }
+
+  # provisioner "local-exec" {
+  #   when = destroy
+    
+  #   working_dir = local.path_ansible_scripts
+    
+  #   command = "ansible-playbook destroy.yml -i ${self.ssh_host}, --extra-vars 'password_id=${self.clone}'"
+  # }
 }
