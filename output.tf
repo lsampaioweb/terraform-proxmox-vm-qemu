@@ -17,3 +17,7 @@ output "vm_ipv4" {
 output "vm_macaddr" {
   value = proxmox_vm_qemu.main.network[0].macaddr
 }
+
+output "vm_cloned_from" {
+  value = proxmox_vm_qemu.main.clone
+}

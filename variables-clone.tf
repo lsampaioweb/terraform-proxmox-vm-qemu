@@ -12,7 +12,7 @@ variable "clone" {
 variable "full_clone" {
   description = "Set to true to create a full clone, or false to create a linked clone. Only applies when clone is set."
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "force_create" {
