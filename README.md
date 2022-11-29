@@ -32,19 +32,10 @@ Run these commands on the computer that is running Terraform:
 
   03 - Add the API token of the user to the ~/.bashrc file.
     nano ~/.bashrc
-    # Function to unlock gnome keyring for headless logins.
-    function unlock-keyring ()
-    {
-      read -rsp "Type your password: " pass
-      export $(echo -n "$pass" | gnome-keyring-daemon --replace --unlock --daemonize)
-      unset pass
+    export PM_API_TOKEN_SECRET=$(secret-tool lookup token "proxmox-terraform-token")
 
-      export PM_API_TOKEN_SECRET=$(secret-tool lookup token "proxmox-terraform-token")
-    }
-
-  04 - Run the unlock-keyring command on the terminal to unlock the secret - manager.
-    source ~/.bashrc  
-    unlock-keyring
+  04 - Run the source command on the terminal.
+    source ~/.bashrc
 
   05 - Create the necessary folders and files.
     mkdir modules
