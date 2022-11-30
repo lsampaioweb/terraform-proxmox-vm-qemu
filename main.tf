@@ -67,8 +67,8 @@ resource "proxmox_vm_qemu" "main" {
   lifecycle {
     ignore_changes = [
       ciuser,
-      target_node,
-      pool
+      pool,
+      target_node
     ]
   }
 }
