@@ -68,24 +68,7 @@ resource "proxmox_vm_qemu" "main" {
     ignore_changes = [
       ciuser,
       target_node,
-      pool,
-      disk,
+      pool
     ]
   }
-
-  # provisioner "local-exec" {
-  #   working_dir = local.path_ansible_scripts
-
-  #   # On every run the IP will be different, so don't check it.
-  #   # command = "ansible-playbook provision.yml -i ${self.ssh_host}, --extra-vars 'hostname=${self.name} public_ip=${self.ssh_host} password_id=${self.clone}'"
-  #   command = "ansible-playbook provision.yml -i ${self.ssh_host}, --extra-vars '@${self.name}.json'"
-  # }
-
-  # provisioner "local-exec" {
-  #   when = destroy
-
-  #   working_dir = local.path_ansible_scripts
-
-  #   command = "ansible-playbook destroy.yml -i ${self.ssh_host}, --extra-vars 'password_id=${self.clone}'"
-  # }
 }
