@@ -65,6 +65,7 @@ resource "proxmox_vm_qemu" "main" {
       bridge   = network.value.bridge
       tag      = network.value.tag
       firewall = network.value.firewall
+      macaddr  = network.value.macaddr
     }
   }
 

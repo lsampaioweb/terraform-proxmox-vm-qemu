@@ -6,9 +6,11 @@ variable "networks" {
     # Bridge to which the network device should be attached. The Proxmox VE standard bridge is called vmbr0.
     bridge = string
     # The VLAN tag to apply to packets on this device. -1 disables VLAN tagging.
-    tag = number
+    tag = optional(number)
     # Whether to enable the Proxmox firewall on this network device. Defaults to false.
-    firewall = bool
+    firewall = optional(bool)
+    # Override the randomly generated MAC Address for the VM.
+    macaddr  = optional(string)
   }))
 
   default = {
@@ -16,8 +18,6 @@ variable "networks" {
       # WAN
       model    = "virtio"
       bridge   = "vmbr0"
-      tag      = -1
-      firewall = false
     }
   }
 }
