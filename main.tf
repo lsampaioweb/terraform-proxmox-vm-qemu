@@ -39,25 +39,33 @@ resource "proxmox_vm_qemu" "main" {
   memory  = var.memory
   balloon = var.balloon
 
-  # Hard Disk  
-  disk {
-    type     = var.disk_type
-    storage  = var.disk_storage
-    size     = var.disk_size
-    format   = var.disk_format
-    cache    = var.disk_cache
-    backup   = var.disk_backup
-    iothread = var.disk_iothread
-    ssd      = var.disk_ssd
-    discard  = var.disk_discard
+  # Hard Disk
+  dynamic "disk" {
+    for_each = var.disks
+
+    content {
+      type     = disk.value.type
+      storage  = disk.value.storage
+      size     = disk.value.size
+      format   = disk.value.format
+      cache    = disk.value.cache
+      backup   = disk.value.backup
+      iothread = disk.value.iothread
+      ssd      = disk.value.ssd
+      discard  = disk.value.discard
+    }
   }
 
-  # Network
-  network {
-    model    = var.network_model
-    bridge   = var.network_bridge
-    tag      = var.network_tag
-    firewall = var.network_firewall
+  # Networks
+  dynamic "network" {
+    for_each = var.networks
+
+    content {
+      model    = network.value.model
+      bridge   = network.value.bridge
+      tag      = network.value.tag
+      firewall = network.value.firewall
+    }
   }
 
   # High Availability
