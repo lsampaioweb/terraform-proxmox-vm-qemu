@@ -1,5 +1,5 @@
 variable "cpu" {
-  description = "The CPU type to emulate. Defaults to host."
+  description = "The CPU type to emulate. Defaults to kvm64."
   type        = string
   default     = "kvm64"
 }

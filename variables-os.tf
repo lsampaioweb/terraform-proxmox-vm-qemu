@@ -35,15 +35,25 @@ variable "hotplug" {
 }
 
 variable "scsihw" {
-  description = "The SCSI controller model to emulate. Can be lsi, lsi53c810, virtio-scsi-pci, virtio-scsi-single, megasas, or pvscsi. Defaults to lsi."
+  description = "The SCSI controller model to emulate. Can be lsi, lsi53c810, virtio-scsi-pci, virtio-scsi-single, megasas, or pvscsi. Defaults to virtio-scsi-single."
   type        = string
   default     = "virtio-scsi-single"
+
+  validation {
+    condition     = contains(["virtio-scsi-single", "lsi", "lsi53c810", "virtio-scsi-pci", "megasas", "pvscsi"], var.scsihw)
+    error_message = "Valid values are virtio-scsi-single, lsi, lsi53c810, virtio-scsi-pci, megasas, or pvscsi."
+  }
 }
 
 variable "vga_type" {
-  description = "The type of display to virtualize. Options: cirrus, none, qxl, qxl2, qxl3, qxl4, serial0, serial1, serial2, serial3, std, virtio, vmware. Defaults to std."
+  description = "The type of display to virtualize. Options: std, cirrus, none, qxl, qxl2, qxl3, qxl4, serial0, serial1, serial2, serial3, virtio, vmware. Defaults to std."
   type        = string
   default     = "std"
+
+  validation {
+    condition     = contains(["std", "cirrus", "none", "qxl", "qxl2", "qxl3", "qxl4", "serial0", "serial1", "serial2", "serial3", "virtio", "vmware"], var.vga_type)
+    error_message = "Valid values are std, cirrus, none, qxl, qxl2, qxl3, qxl4, serial0, serial1, serial2, serial3, virtio and vmware."
+  }
 }
 
 variable "vga_memory" {

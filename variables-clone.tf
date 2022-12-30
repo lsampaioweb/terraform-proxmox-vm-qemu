@@ -1,7 +1,12 @@
 variable "os_type" {
-  description = "Which provisioning method to use, based on the OS type. Options: ubuntu, centos, cloud-init."
+  description = "Which provisioning method to use, based on the OS type. Options: ubuntu, centos and cloud-init."
   type        = string
   default     = "ubuntu"
+
+  validation {
+    condition     = contains(["ubuntu", "centos", "cloud-init"], var.os_type)
+    error_message = "Valid values are ubuntu, centos and cloud-init."
+  }
 }
 
 variable "clone" {
