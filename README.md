@@ -43,10 +43,10 @@ Run these commands on the computer that is running Terraform:
     git submodule add https://github.com/lsampaioweb/terraform-proxmox-vm-module.git proxmox-ubuntu-22-04
 
     cd ..
-    mkdir stagging
+    mkdir staging
     mkdir production
 
-    cd stagging # Repeat these steps for the production folder.
+    cd staging # Repeat these steps for the production folder.
     nano providers.tf
     terraform {
       required_providers {
@@ -68,13 +68,13 @@ Run these commands on the computer that is running Terraform:
       source = "../modules/proxmox-ubuntu-22-04"
 
       clone       = "ubuntu-22-04-server-raw"
-      name        = "ubuntu-22-04-server-raw-vm-stagging"
+      name        = "ubuntu-22-04-server-raw-vm-staging"
       description = "Ubuntu 22.04 VM with bare minimum settings"
-      pool        = "Stagging"
+      pool        = "Staging"
     }
 
   06 - Run Terraform to create the VM.
-    cd terraform/{stagging or production}
+    cd terraform/{staging or production}
     terraform init
 
     terraform plan
