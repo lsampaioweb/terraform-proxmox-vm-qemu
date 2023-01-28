@@ -38,7 +38,7 @@ variable "onboot" {
 }
 
 variable "startup" {
-  description = "The startup and shutdown behaviour."
+  description = "The startup and shutdown behaviour. Format: order=X,up=X,down=X"
   type        = string
   default     = ""
 }
