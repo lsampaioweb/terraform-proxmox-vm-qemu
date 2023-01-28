@@ -7,6 +7,7 @@ resource "proxmox_vm_qemu" "main" {
   vmid        = var.vmid
   desc        = var.description
   onboot      = var.onboot
+  startup     = var.startup
   oncreate    = var.oncreate
   pool        = var.pool
 

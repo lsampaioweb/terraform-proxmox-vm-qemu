@@ -37,6 +37,12 @@ variable "onboot" {
   default     = false
 }
 
+variable "startup" {
+  description = "The startup and shutdown behaviour."
+  type        = string
+  default     = ""
+}
+
 variable "oncreate" {
   description = "Whether to have the VM startup after the VM is created."
   type        = bool
