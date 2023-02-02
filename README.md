@@ -40,7 +40,7 @@ Run these commands on the computer (Linux) that is running Terraform:
 # Examples
 
 ```terraform
-module "proxmox-vm" {
+module "proxmox_vm" {
   source  = "lsampaioweb/vm-qemu/proxmox"
 
   target_node = "kvm-01"
