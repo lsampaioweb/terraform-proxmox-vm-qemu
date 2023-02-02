@@ -1,5 +1,5 @@
 # terraform-proxmox-ubuntu-22-04-module
-Repository of a Terraform module to create an Ubuntu 22.04 virtual machine (server or desktop) on Proxmox VE. This is supposed to be used as a git submodule for your terraform project.
+Repository of a Terraform module to create an Ubuntu 22.04 virtual machine (server or desktop) on Proxmox VE.
 
 Run these commands on the Proxmox node (just once and on any node):
 ```bash
@@ -22,9 +22,8 @@ Run these commands on the Proxmox node (just once and on any node):
 ```
 
 Run these commands on the computer that is running Terraform:
-
 ```bash
-  01 - Save the password in the secret manager.
+  01 - Save the password (that you just created) in the secret manager.
     secret-tool store --label="proxmox-terraform-password" password proxmox-terraform-password
 
   02 - Save the API token in the secret manager.
@@ -36,49 +35,6 @@ Run these commands on the computer that is running Terraform:
 
   04 - Run the source command on the terminal.
     source ~/.bashrc
-
-  05 - Create the necessary folders and files.
-    mkdir modules
-    cd modules
-    git submodule add https://github.com/lsampaioweb/terraform-proxmox-vm-qemu.git
-
-    cd ..
-    mkdir staging
-    mkdir production
-
-    cd staging # Repeat these steps for the production folder.
-    nano providers.tf
-    terraform {
-      required_providers {
-        proxmox = {
-          source  = "Telmate/proxmox"
-          version = "2.9.11"
-        }
-      }
-    }
-
-    provider "proxmox" {
-      pm_api_url      = "https://proxmoxurl:8006/api2/json"
-      pm_api_token_id = "terraform@pve!terraform"
-    }
-
-    cd ..
-    nano main.tf
-    module "proxmox-ubuntu-22-04" {
-      source = "../modules/proxmox-ubuntu-22-04"
-
-      clone       = "ubuntu-22-04-server-raw"
-      name        = "ubuntu-22-04-server-raw-vm-staging"
-      description = "Ubuntu 22.04 VM with bare minimum settings"
-      pool        = "Staging"
-    }
-
-  06 - Run Terraform to create the VM.
-    cd terraform/{staging or production}
-    terraform init
-
-    terraform plan
-    terraform apply
 ```
 
 # License:
