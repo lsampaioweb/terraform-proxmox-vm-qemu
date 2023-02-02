@@ -14,7 +14,7 @@ Run these commands on the Proxmox node (just once and on any node):
     pveum user token add terraform@pve terraform --comment "The token that Terraform will use."
 
   04 - Create a role for the user and set the permissions.
-    pveum roleadd Terraform -privs "Datastore.AllocateSpace, Datastore.Audit, Group.Allocate, Pool.Audit, Pool.Allocate, Sys.Audit, Sys.Modify, VM.Allocate, VM.Audit, VM.Clone, VM.Config.CDROM, VM.Config.CPU, VM.Config.Cloudinit, VM.Config.Disk, VM.Config.HWType, VM.Config.Memory, VM.Config.Network, VM.Config.Options, VM.Console, VM.Monitor, VM.PowerMgmt" 
+    pveum roleadd Terraform -privs "Datastore.AllocateSpace, Datastore.Audit, Group.Allocate, Pool.Audit, Pool.Allocate, Sys.Audit, Sys.Modify, VM.Allocate, VM.Audit, VM.Clone, VM.Config.CDROM, VM.Config.CPU, VM.Config.Cloudinit, VM.Config.Disk, VM.Config.HWType, VM.Config.Memory, VM.Config.Network, VM.Config.Options, VM.Console, VM.Monitor, VM.PowerMgmt"
 
   05 - Set the role to the user and API Token.
     pveum acl modify / -user terraform@pve -role Terraform
@@ -35,23 +35,6 @@ Run these commands on the computer (Linux) that is running Terraform:
 
   04 - Run the source command on the terminal.
     source ~/.bashrc
-```
-
-# Examples
-
-```terraform
-module "proxmox_vm" {
-  source  = "lsampaioweb/vm-qemu/proxmox"
-
-  target_node = "kvm-01"
-  clone       = "ubuntu-22-04-server-std-docker"
-  name        = "stg-load-balancer-01"
-  onboot      = true
-  startup     = "order=1"
-  vcpus       = 3
-  description = "Traefik VM as Load Balancer - Staging."
-  pool        = "Staging"
-}
 ```
 
 # Complete Projects
