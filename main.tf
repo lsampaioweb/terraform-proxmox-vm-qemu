@@ -75,6 +75,8 @@ resource "proxmox_vm_qemu" "main" {
   hastate = var.hastate
 
   lifecycle {
+    create_before_destroy = true
+    
     ignore_changes = [
       ciuser,
       pool,
