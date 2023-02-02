@@ -35,4 +35,5 @@ module "proxmox_vm" {
 
 output "virtual_machines" {
   value = module.proxmox_vm
+  description = "Some information about the VM."
 }

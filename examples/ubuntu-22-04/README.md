@@ -46,6 +46,7 @@ The output will display the id, name, ipv4, mac address and other information ab
 ```terraform
 output "virtual_machines" {
   value = module.proxmox_vm
+  description = "Some information about the VM."
 }
 ```
 
