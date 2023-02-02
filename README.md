@@ -39,7 +39,25 @@ Run these commands on the computer (Linux) that is running Terraform:
 
 # Examples
 
-[Examples](examples/ "Examples")
+```terraform
+module "proxmox-vm" {
+  source  = "lsampaioweb/vm-qemu/proxmox"
+
+  target_node = "kvm-01"
+  clone       = "ubuntu-22-04-server-std-docker"
+  name        = "stg-load-balancer-01"
+  onboot      = true
+  startup     = "order=1"
+  vcpus       = 3
+  description = "Traefik VM as Load Balancer - Staging."
+  pool        = "Staging"
+}
+```
+
+# Complete Projects
+
+1. [Load Balancer](https://github.com/lsampaioweb/load-balancer) - Repository with scripts to setup an Ubuntu server with Traefik installed.
+1. [Firewall](https://github.com/lsampaioweb/firewall) - Repository with scripts to setup a pfSense firewall.
 
 # License:
 
