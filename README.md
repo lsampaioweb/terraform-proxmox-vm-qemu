@@ -1,5 +1,5 @@
 # terraform-proxmox-vm-qemu
-Repository of a Terraform module to create a virtual machine (server or desktop) on Proxmox VE.
+Terraform module to create a virtual machine (server or desktop) on Proxmox VE.
 
 Run these commands on the Proxmox node (just once and on any node):
 ```bash
