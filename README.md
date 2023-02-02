@@ -1,10 +1,10 @@
-# terraform-proxmox-ubuntu-22-04-module
-Repository of a Terraform module to create an Ubuntu 22.04 virtual machine (server or desktop) on Proxmox VE.
+# terraform-proxmox-vm-qemu
+Repository of a Terraform module to create a virtual machine (server or desktop) on Proxmox VE.
 
 Run these commands on the Proxmox node (just once and on any node):
 ```bash
   01 - Create the user that Terraform will use.
-    pveum user add terraform@pve --firstname "Terraform" --email "lsampaioweb@gmail.com" --comment "The user that Terraform will use."
+    pveum user add terraform@pve --firstname "Terraform" --email "XXX@gmail.com" --comment "The user that Terraform will use."
 
   02 - Create a password for the user.
     uuid
@@ -21,7 +21,7 @@ Run these commands on the Proxmox node (just once and on any node):
     pveum acl modify / -token 'terraform@pve!terraform' -role Terraform
 ```
 
-Run these commands on the computer that is running Terraform:
+Run these commands on the computer (Linux) that is running Terraform:
 ```bash
   01 - Save the password (that you just created) in the secret manager.
     secret-tool store --label="proxmox-terraform-password" password proxmox-terraform-password
@@ -36,6 +36,10 @@ Run these commands on the computer that is running Terraform:
   04 - Run the source command on the terminal.
     source ~/.bashrc
 ```
+
+# Examples
+
+[Examples](examples/ "Examples")
 
 # License:
 
