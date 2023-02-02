@@ -40,7 +40,7 @@ Run these commands on the computer that is running Terraform:
   05 - Create the necessary folders and files.
     mkdir modules
     cd modules
-    git submodule add https://github.com/lsampaioweb/terraform-proxmox-vm-module.git proxmox-ubuntu-22-04
+    git submodule add https://github.com/lsampaioweb/terraform-proxmox-vm-qemu.git
 
     cd ..
     mkdir staging
