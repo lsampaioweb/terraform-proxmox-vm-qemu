@@ -6,6 +6,7 @@ resource "proxmox_vm_qemu" "main" {
   name        = var.name
   vmid        = var.vmid
   desc        = var.description
+  bios        = var.bios
   onboot      = var.onboot
   startup     = var.startup
   oncreate    = var.oncreate
@@ -25,9 +26,10 @@ resource "proxmox_vm_qemu" "main" {
   numa    = var.numa
   hotplug = var.hotplug
   scsihw  = var.scsihw
+  tags    = var.tags
   vga {
-    type   = var.vga_type
-    memory = var.vga_memory
+    type   = var.vga.type
+    memory = var.vga.memory
   }
 
   # CPU
@@ -45,15 +47,16 @@ resource "proxmox_vm_qemu" "main" {
     for_each = var.disks
 
     content {
-      type     = disk.value.type
-      storage  = disk.value.storage
-      size     = disk.value.size
-      format   = disk.value.format
-      cache    = disk.value.cache
-      backup   = disk.value.backup
-      iothread = disk.value.iothread
-      ssd      = disk.value.ssd
-      discard  = disk.value.discard
+      type      = disk.value.type
+      storage   = disk.value.storage
+      size      = disk.value.size
+      format    = disk.value.format
+      cache     = disk.value.cache
+      backup    = disk.value.backup
+      iothread  = disk.value.iothread
+      replicate = disk.value.replicate
+      ssd       = disk.value.ssd
+      discard   = disk.value.discard
     }
   }
 

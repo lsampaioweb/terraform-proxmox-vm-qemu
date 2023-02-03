@@ -8,14 +8,6 @@ variable "networks" {
     macaddr  = optional(string) # Override the randomly generated MAC Address for the VM.
   }))
 
-  default = {
-    "01" = {
-      # WAN
-      bridge = "vmbr0"
-      model  = "virtio"
-    }
-  }
-
   validation {
     condition = alltrue([for item in var.networks :
     contains(["virtio", "e1000", "e1000-82540em", "e1000-82544gc", "e1000-82545em", "i82551", "i82557b", "i82559er", "ne2k_isa", "ne2k_pci", "pcnet", "rtl8139", "vmxnet3"], item.model)])

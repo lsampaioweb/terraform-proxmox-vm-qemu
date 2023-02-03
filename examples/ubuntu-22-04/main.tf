@@ -21,7 +21,7 @@ provider "proxmox" {
 }
 
 module "proxmox_vm" {
-  source  = "lsampaioweb/vm-qemu/proxmox"
+  source = "lsampaioweb/vm-qemu/proxmox"
 
   target_node = "kvm-01"
   clone       = "ubuntu-22-04-server-std-docker"
@@ -34,6 +34,6 @@ module "proxmox_vm" {
 }
 
 output "virtual_machines" {
-  value = module.proxmox_vm
+  value       = module.proxmox_vm
   description = "Some information about the VM."
 }

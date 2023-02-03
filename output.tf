@@ -19,7 +19,7 @@ output "vm_ipv4" {
 }
 
 output "vm_macaddr" {
-  value       = proxmox_vm_qemu.main.network[0].macaddr
+  value       = proxmox_vm_qemu.main.network[*].macaddr
   description = "The Macaddress of the VM."
 }
 

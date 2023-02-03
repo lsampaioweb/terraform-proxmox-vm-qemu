@@ -31,7 +31,7 @@ variable "numa" {
 variable "hotplug" {
   description = "Comma delimited list of hotplug features to enable. Options: network, disk, cpu, memory, usb. Set to 0 to disable hotplug."
   type        = string
-  default     = "disk,network,cpu"
+  default     = "network,disk,usb"
 }
 
 variable "scsihw" {
@@ -45,19 +45,22 @@ variable "scsihw" {
   }
 }
 
-variable "vga_type" {
-  description = "The type of display to virtualize. Options: std, cirrus, none, qxl, qxl2, qxl3, qxl4, serial0, serial1, serial2, serial3, virtio, vmware. Defaults to std."
+variable "tags" {
+  description = "Tags of the VM. This is only meta information."
   type        = string
-  default     = "std"
-
-  validation {
-    condition     = contains(["std", "cirrus", "none", "qxl", "qxl2", "qxl3", "qxl4", "serial0", "serial1", "serial2", "serial3", "virtio", "vmware"], var.vga_type)
-    error_message = "Valid values are std, cirrus, none, qxl, qxl2, qxl3, qxl4, serial0, serial1, serial2, serial3, virtio and vmware."
-  }
+  default     = ""
 }
 
-variable "vga_memory" {
-  description = "Sets the VGA memory (in MiB). Has no effect with serial display type."
-  type        = number
-  default     = 0
+variable "vga" {
+  description = "Type: The type of display to virtualize. Options: std, cirrus, none, qxl, qxl2, qxl3, qxl4, serial0, serial1, serial2, serial3, virtio, vmware. Defaults to std. Memory: Sets the VGA memory (in MiB). Has no effect with serial display type."
+  type = object({
+    type   = optional(string, "std")
+    memory = optional(number, 0)
+  })
+
+  validation {
+    condition     = contains(["std", "cirrus", "none", "qxl", "qxl2", "qxl3", "qxl4", "serial0", "serial1", "serial2", "serial3", "virtio", "vmware"], var.vga.type)
+    error_message = "Valid values are std, cirrus, none, qxl, qxl2, qxl3, qxl4, serial0, serial1, serial2, serial3, virtio and vmware."
+  }
+
 }
