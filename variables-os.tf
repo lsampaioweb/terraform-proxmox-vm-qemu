@@ -56,7 +56,8 @@ variable "vga" {
   type = object({
     type   = optional(string, "std")
     memory = optional(number, 0)
-  }, {})
+  })
+  default = {}
 
   validation {
     condition     = contains(["std", "cirrus", "none", "qxl", "qxl2", "qxl3", "qxl4", "serial0", "serial1", "serial2", "serial3", "virtio", "vmware"], var.vga.type)
