@@ -40,8 +40,8 @@ variable "test_cases" {
     vcpus   = optional(number, 2)
 
     ## Memory
-    memory  = optional(number, 4096)
-    balloon = optional(number, 2048)
+    memory  = optional(number, 3072)
+    balloon = optional(number, 1024)
 
     ## Hard Disk
     disks = optional(map(object({
