@@ -7,7 +7,7 @@ variable "tablet" {
 variable "boot" {
   description = "The boot order for the VM. Ordered string of characters denoting boot order. Options: floppy (a), hard disk (c), CD-ROM (d), or network (n)."
   type        = string
-  default     = "order=scsi0"
+  default     = "order=scsi0;net0"
 }
 
 variable "agent" {
