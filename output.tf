@@ -1,5 +1,5 @@
 output "id" {
-  value       = proxmox_vm_qemu.main.id
+  value       = proxmox_vm_qemu.main.vmid
   description = "The ID of the VM."
 }
 
@@ -13,13 +13,8 @@ output "clone" {
   description = "The template that the VM was cloned from."
 }
 
-output "disks" {
-  value       = proxmox_vm_qemu.main.disk[*]
-  description = "The disks of the VM."
-}
-
-output "networks" {
-  value       = proxmox_vm_qemu.main.network[*]
+output "macaddr" {
+  value       = proxmox_vm_qemu.main.network[*].macaddr
   description = "The networks of the VM."
 }
 
@@ -31,9 +26,4 @@ output "ipv4" {
 output "target_node" {
   value       = proxmox_vm_qemu.main.target_node
   description = "The Proxmox node that received the VM."
-}
-
-output "vga" {
-  value       = proxmox_vm_qemu.main.vga
-  description = "The display settings of the VM."
 }
