@@ -1,5 +1,5 @@
 output "id" {
-  value       = proxmox_vm_qemu.main.vmid
+  value       = proxmox_vm_qemu.main.id
   description = "The ID of the VM."
 }
 
