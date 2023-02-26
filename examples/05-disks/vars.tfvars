@@ -3,6 +3,10 @@ test_cases = {
     target_node = "kvm-01"
     name        = "VM-01"
     clone       = "template-01"
+    networks = {
+      tag = 100
+    }
+
   },
   "02" = {
     target_node = "kvm-02"

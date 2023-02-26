@@ -1,13 +1,15 @@
 variable "hagroup" {
   description = "The HA group identifier the resource belongs to (requires hastate to be set!)."
   type        = string
-  default     = "default"
+  default     = ""
+  nullable    = false
 }
 
 variable "hastate" {
   description = "Requested HA state for the resource. Options: started, stopped, enabled, disabled, or ignored."
   type        = string
-  default     = "started"
+  default     = "ignored"
+  nullable    = false
 
   validation {
     condition     = contains(["started", "stopped", "enabled", "disabled", "ignored"], var.hastate)

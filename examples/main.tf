@@ -1,5 +1,5 @@
 module "project" {
-  source = "../.."
+  source = "../"
 
   for_each = var.test_cases
 
@@ -38,16 +38,20 @@ module "project" {
   vcpus   = each.value.vcpus
 
   # Memory
-  memory  = each.value.memory
   balloon = each.value.balloon
+  memory  = each.value.memory
 
-  # Hard Disk  
+  # Hard Disk
   disks = each.value.disks
 
   # Networks
-  networks = each.value.networks
+  define_connection_info = each.value.define_connection_info
+  os_network_config      = each.value.os_network_config
+  networks               = each.value.networks
 
   # High Availability
   hagroup = each.value.hagroup
   hastate = each.value.hastate
+
+  cloud_init = each.value.cloud_init
 }
