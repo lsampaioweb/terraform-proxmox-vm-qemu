@@ -43,7 +43,7 @@ variable "hotplug" {
 variable "scsihw" {
   description = "The SCSI controller model to emulate. Can be lsi, lsi53c810, virtio-scsi-pci, virtio-scsi-single, megasas, or pvscsi. Defaults to virtio-scsi-single."
   type        = string
-  default     = "virtio-scsi-single"
+  default     = "virtio-scsi-pci"
   nullable    = false
 
   validation {
@@ -63,7 +63,7 @@ variable "vga" {
   description = "Type: The type of display to virtualize. Options: std, cirrus, none, qxl, qxl2, qxl3, qxl4, serial0, serial1, serial2, serial3, virtio, vmware. Defaults to std. Memory: Sets the VGA memory (in MiB). Has no effect with serial display type."
   type = object({
     type   = optional(string, "std")
-    memory = optional(number, 0)
+    memory = optional(number, 16)
   })
   default  = {}
   nullable = false

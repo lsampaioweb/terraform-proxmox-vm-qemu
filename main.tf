@@ -18,7 +18,7 @@ resource "proxmox_vm_qemu" "main" {
   full_clone   = var.full_clone
   force_create = var.force_create
 
-  # OS
+  # OS  
   tablet  = var.tablet
   boot    = var.boot
   agent   = var.agent
@@ -112,7 +112,6 @@ resource "proxmox_vm_qemu" "main" {
     ignore_changes = [
       target_node,
       pool,
-      ciuser
-    ]
+      ciuser    ]
   }
 }

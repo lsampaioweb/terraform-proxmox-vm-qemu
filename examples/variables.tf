@@ -8,7 +8,7 @@ variable "test_cases" {
     vmid        = optional(number)
     bios        = optional(string)
     description = optional(string)
-    onboot      = optional(bool)
+    onboot      = optional(bool, true)
     startup     = optional(string)
     oncreate    = optional(bool)
     pool        = optional(string)
@@ -21,7 +21,7 @@ variable "test_cases" {
 
     ## OS
     tablet  = optional(bool)
-    boot    = optional(string, "order=scsi0;ide0;net0")
+    boot    = optional(string, "order=scsi0;net0")
     agent   = optional(number)
     qemu_os = optional(string)
     numa    = optional(bool)
@@ -51,10 +51,10 @@ variable "test_cases" {
       format    = optional(string)
       cache     = optional(string)
       backup    = optional(bool)
-      iothread  = optional(number, 1)
+      iothread  = optional(number)
       replicate = optional(number)
-      ssd       = optional(number, 1)
-      discard   = optional(string)
+      ssd       = optional(number)
+      discard   = optional(string, "on")
       })), {
       "01" = {}
     })
@@ -69,7 +69,9 @@ variable "test_cases" {
       tag      = optional(number)
       firewall = optional(bool)
       macaddr  = optional(string)
-    })))
+      })), {
+      "01" = {}
+    })
 
     ## High Availability
     hagroup = optional(string, "default")

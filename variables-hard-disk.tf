@@ -7,16 +7,26 @@ variable "disks" {
   }
   nullable = false
   type = map(object({
-    type      = optional(string, "scsi") # Required. The type of disk device to add. Options: ide, sata, scsi and virtio.
-    storage   = string                   # Required. The name of the storage pool on which to store the disk.
-    size      = optional(string, "20G")  # Required. The size of the created disk, format must match the regex \\d+[GMK], where G, M, and K represent Gigabytes, Megabytes, and Kilobytes respectively.
-    format    = optional(string, "raw")  # The format of the file backing the disk. Options: raw, cow, qcow, qed, qcow2, vmdk and cloop. Defaults to raw.
-    cache     = optional(string, "none") # The drive's cache mode. Options: none, directsync, unsafe, writeback and writethrough. Defaults to none.
-    backup    = optional(bool, false)    # Whether the drive should be included when making backups. Defaults to false.
-    iothread  = optional(number, 0)      # Whether to use iothreads for this drive. Only effective with a disk of type virtio, or scsi when the emulated controller type (scsihw top level block argument) is virtio-scsi-single. Defaults to 0.
-    replicate = optional(number, 0)      # Whether the drive should considered for replication jobs. Defaults to 0.
-    ssd       = optional(number, 0)      # Whether to expose this drive as an SSD, rather than a rotational hard disk. Defaults to 0.
-    discard   = optional(string, "on")   # Controls whether to pass discard/trim requests to the underlying storage. Only effective when the underlying storage supports thin provisioning.
+    # Required. The type of disk device to add. Options: ide, sata, scsi and virtio.
+    type = optional(string, "scsi")
+    # Required. The name of the storage pool on which to store the disk.
+    storage = string
+    # Required. The size of the created disk, format must match the regex \\d+[GMK], where G, M, and K represent Gigabytes, Megabytes, and Kilobytes respectively.
+    size = optional(string, "20G")
+    # The format of the file backing the disk. Options: raw, cow, qcow, qed, qcow2, vmdk and cloop. Defaults to raw.
+    format = optional(string)
+    # The drive's cache mode. Options: none, directsync, unsafe, writeback and writethrough. Defaults to none.
+    cache = optional(string, "none")
+    # Whether the drive should be included when making backups. Defaults to false.
+    backup = optional(bool)
+    # Whether to use iothreads for this drive. Only effective with a disk of type virtio, or scsi when the emulated controller type (scsihw top level block argument) is virtio-scsi-single. Defaults to 0.
+    iothread = optional(number)
+    # Whether the drive should considered for replication jobs. Defaults to 1.
+    replicate = optional(number)
+    # Whether to expose this drive as an SSD, rather than a rotational hard disk. Defaults to 1.
+    ssd = optional(number, 1)
+    # Controls whether to pass discard/trim requests to the underlying storage. Only effective when the underlying storage supports thin provisioning.
+    discard = optional(string)
   }))
 
   validation {
@@ -24,10 +34,10 @@ variable "disks" {
     error_message = "Valid values are scsi, ide, sata and virtio."
   }
 
-  validation {
-    condition     = alltrue([for item in var.disks : contains(["raw", "cow", "qcow", "qed", "qcow2", "vmdk", "cloop"], item.format)])
-    error_message = "Valid values are raw, cow, qcow, qed, qcow2, vmdk and cloop."
-  }
+  # validation {
+  #   condition     = alltrue([for item in var.disks : contains(["raw", "cow", "qcow", "qed", "qcow2", "vmdk", "cloop"], item.format)])
+  #   error_message = "Valid values are raw, cow, qcow, qed, qcow2, vmdk and cloop."
+  # }
 
   validation {
     condition     = alltrue([for item in var.disks : contains(["none", "directsync", "unsafe", "writeback", "writethrough"], item.cache)])

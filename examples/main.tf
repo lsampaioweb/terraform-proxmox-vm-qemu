@@ -20,7 +20,7 @@ module "project" {
   full_clone   = each.value.full_clone
   force_create = each.value.force_create
 
-  # OS
+  # OS  
   tablet  = each.value.tablet
   boot    = each.value.boot
   agent   = each.value.agent
