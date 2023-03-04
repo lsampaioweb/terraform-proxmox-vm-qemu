@@ -18,6 +18,32 @@ resource "proxmox_vm_qemu" "main" {
   full_clone   = var.full_clone
   force_create = var.force_create
 
+  # Cloud-Init
+  cicustom                = var.cloud_init.cicustom
+  cloudinit_cdrom_storage = var.cloud_init.cloudinit_cdrom_storage
+  ciuser                  = var.cloud_init.ciuser
+  ci_wait                 = var.cloud_init.ci_wait
+  cipassword              = var.cloud_init.cipassword
+  searchdomain            = var.cloud_init.searchdomain
+  nameserver              = var.cloud_init.nameserver
+  sshkeys                 = var.cloud_init.sshkeys
+  ipconfig0               = var.cloud_init.ipconfig0
+  ipconfig1               = var.cloud_init.ipconfig1
+  ipconfig2               = var.cloud_init.ipconfig2
+  ipconfig3               = var.cloud_init.ipconfig3
+  ipconfig4               = var.cloud_init.ipconfig4
+  ipconfig5               = var.cloud_init.ipconfig5
+  ipconfig6               = var.cloud_init.ipconfig6
+  ipconfig7               = var.cloud_init.ipconfig7
+  ipconfig8               = var.cloud_init.ipconfig8
+  ipconfig9               = var.cloud_init.ipconfig9
+  ipconfig10              = var.cloud_init.ipconfig10
+  ipconfig11              = var.cloud_init.ipconfig11
+  ipconfig12              = var.cloud_init.ipconfig12
+  ipconfig13              = var.cloud_init.ipconfig13
+  ipconfig14              = var.cloud_init.ipconfig14
+  ipconfig15              = var.cloud_init.ipconfig15  
+
   # OS  
   tablet  = var.tablet
   boot    = var.boot
@@ -80,38 +106,9 @@ resource "proxmox_vm_qemu" "main" {
   hagroup = var.hagroup
   hastate = var.hastate
 
-  # Cloud-Init
-  cicustom                = var.cloud_init.cicustom
-  cloudinit_cdrom_storage = var.cloud_init.cloudinit_cdrom_storage
-  ciuser                  = var.cloud_init.ciuser
-  ci_wait                 = var.cloud_init.ci_wait
-  cipassword              = var.cloud_init.cipassword
-  searchdomain            = var.cloud_init.searchdomain
-  nameserver              = var.cloud_init.nameserver
-  sshkeys                 = var.cloud_init.sshkeys
-  ipconfig0               = var.cloud_init.ipconfig0
-  ipconfig1               = var.cloud_init.ipconfig1
-  ipconfig2               = var.cloud_init.ipconfig2
-  ipconfig3               = var.cloud_init.ipconfig3
-  ipconfig4               = var.cloud_init.ipconfig4
-  ipconfig5               = var.cloud_init.ipconfig5
-  ipconfig6               = var.cloud_init.ipconfig6
-  ipconfig7               = var.cloud_init.ipconfig7
-  ipconfig8               = var.cloud_init.ipconfig8
-  ipconfig9               = var.cloud_init.ipconfig9
-  ipconfig10              = var.cloud_init.ipconfig10
-  ipconfig11              = var.cloud_init.ipconfig11
-  ipconfig12              = var.cloud_init.ipconfig12
-  ipconfig13              = var.cloud_init.ipconfig13
-  ipconfig14              = var.cloud_init.ipconfig14
-  ipconfig15              = var.cloud_init.ipconfig15
-
   lifecycle {
     create_before_destroy = true
 
-    ignore_changes = [
-      target_node,
-      pool,
-      ciuser    ]
+    ignore_changes = [target_node, pool, ciuser]
   }
 }

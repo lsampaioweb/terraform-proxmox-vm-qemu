@@ -43,7 +43,7 @@ variable "hotplug" {
 variable "scsihw" {
   description = "The SCSI controller model to emulate. Can be lsi, lsi53c810, virtio-scsi-pci, virtio-scsi-single, megasas, or pvscsi. Defaults to virtio-scsi-single."
   type        = string
-  default     = "virtio-scsi-pci"
+  default     = "virtio-scsi-single"
   nullable    = false
 
   validation {

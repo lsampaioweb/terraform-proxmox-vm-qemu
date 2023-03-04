@@ -42,7 +42,7 @@ variable "bios" {
 variable "onboot" {
   description = "Whether to have the VM startup after the PVE node starts."
   type        = bool
-  default     = false
+  default     = true
   nullable    = false
 }
 

@@ -7,7 +7,6 @@ test_cases = {
 
     cloud_init = {
       # DHCP is the default, if you want you can omit the line.
-      # cloudinit_cdrom_storage = "local"
       ipconfig0    = "ip=dhcp"
       searchdomain = "homelab"
     }

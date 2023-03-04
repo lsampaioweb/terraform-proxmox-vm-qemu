@@ -8,7 +8,7 @@ variable "test_cases" {
     vmid        = optional(number)
     bios        = optional(string)
     description = optional(string)
-    onboot      = optional(bool, true)
+    onboot      = optional(bool)
     startup     = optional(string)
     oncreate    = optional(bool)
     pool        = optional(string)
@@ -18,6 +18,34 @@ variable "test_cases" {
     clone        = string
     full_clone   = optional(bool)
     force_create = optional(bool)
+
+    ## Cloud Init
+    cloud_init = optional(object({
+      cicustom                = optional(string)
+      cloudinit_cdrom_storage = optional(string, "Ceph_Gold")
+      ciuser                  = optional(string)
+      ci_wait                 = optional(number)
+      cipassword              = optional(string)
+      searchdomain            = optional(string)
+      nameserver              = optional(string)
+      sshkeys                 = optional(string)
+      ipconfig0               = optional(string)
+      ipconfig1               = optional(string)
+      ipconfig2               = optional(string)
+      ipconfig3               = optional(string)
+      ipconfig4               = optional(string)
+      ipconfig5               = optional(string)
+      ipconfig6               = optional(string)
+      ipconfig7               = optional(string)
+      ipconfig8               = optional(string)
+      ipconfig9               = optional(string)
+      ipconfig10              = optional(string)
+      ipconfig11              = optional(string)
+      ipconfig12              = optional(string)
+      ipconfig13              = optional(string)
+      ipconfig14              = optional(string)
+      ipconfig15              = optional(string)
+    }))
 
     ## OS
     tablet  = optional(bool)
@@ -54,7 +82,7 @@ variable "test_cases" {
       iothread  = optional(number)
       replicate = optional(number)
       ssd       = optional(number)
-      discard   = optional(string, "on")
+      discard   = optional(string)
       })), {
       "01" = {}
     })
@@ -76,33 +104,5 @@ variable "test_cases" {
     ## High Availability
     hagroup = optional(string, "default")
     hastate = optional(string, "started")
-
-    ## Cloud Init
-    cloud_init = optional(object({
-      cicustom                = optional(string)
-      cloudinit_cdrom_storage = optional(string)
-      ciuser                  = optional(string)
-      ci_wait                 = optional(number)
-      cipassword              = optional(string)
-      searchdomain            = optional(string)
-      nameserver              = optional(string)
-      sshkeys                 = optional(string)
-      ipconfig0               = optional(string)
-      ipconfig1               = optional(string)
-      ipconfig2               = optional(string)
-      ipconfig3               = optional(string)
-      ipconfig4               = optional(string)
-      ipconfig5               = optional(string)
-      ipconfig6               = optional(string)
-      ipconfig7               = optional(string)
-      ipconfig8               = optional(string)
-      ipconfig9               = optional(string)
-      ipconfig10              = optional(string)
-      ipconfig11              = optional(string)
-      ipconfig12              = optional(string)
-      ipconfig13              = optional(string)
-      ipconfig14              = optional(string)
-      ipconfig15              = optional(string)
-    }))
   }))
 }
