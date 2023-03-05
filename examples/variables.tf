@@ -22,7 +22,7 @@ variable "test_cases" {
     ## Cloud Init
     cloud_init = optional(object({
       cicustom                = optional(string)
-      cloudinit_cdrom_storage = optional(string, "Ceph_Gold")
+      cloudinit_cdrom_storage = optional(string)
       ciuser                  = optional(string)
       ci_wait                 = optional(number)
       cipassword              = optional(string)
@@ -45,11 +45,11 @@ variable "test_cases" {
       ipconfig13              = optional(string)
       ipconfig14              = optional(string)
       ipconfig15              = optional(string)
-    }))
+    }), {})
 
     ## OS
     tablet  = optional(bool)
-    boot    = optional(string, "order=scsi0;net0")
+    boot    = optional(string, "order=scsi0;ide0;net0")
     agent   = optional(number)
     qemu_os = optional(string)
     numa    = optional(bool)

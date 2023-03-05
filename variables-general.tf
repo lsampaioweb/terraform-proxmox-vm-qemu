@@ -15,7 +15,7 @@ variable "vmid" {
   nullable    = false
 
   validation {
-    condition     = ((var.vmid == 0) || (var.vmid >= 100))
+    condition     = ((var.vmid == 0) || ((var.vmid >= 100) && (var.vmid <= 999999999)))
     error_message = "The vmid should be 0 (for auto generate), 100 or more."
   }
 }

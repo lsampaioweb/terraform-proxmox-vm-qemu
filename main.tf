@@ -42,7 +42,7 @@ resource "proxmox_vm_qemu" "main" {
   ipconfig12              = var.cloud_init.ipconfig12
   ipconfig13              = var.cloud_init.ipconfig13
   ipconfig14              = var.cloud_init.ipconfig14
-  ipconfig15              = var.cloud_init.ipconfig15  
+  ipconfig15              = var.cloud_init.ipconfig15
 
   # OS  
   tablet  = var.tablet

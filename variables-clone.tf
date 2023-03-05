@@ -1,7 +1,7 @@
 variable "os_type" {
   description = "Which provisioning method to use, based on the OS type. Options: ubuntu, centos and cloud-init. The default is cloud-init."
   type        = string
-  default     = "cloud-init"
+  default     = "ubuntu"
   nullable    = false
 
   validation {
