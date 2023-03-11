@@ -1,6 +1,7 @@
 test_cases = {
   "01" = {
-    target_node = "kvm-07"
+    # Required:
+    target_node = "kvm-01"
     name        = "VM-Bare-Minimum"
     clone       = "ubuntu-22-04-server-raw"
   }

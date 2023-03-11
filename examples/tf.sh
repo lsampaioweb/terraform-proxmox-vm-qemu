@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e # Abort if there is an issue with any build.
 
+# Usage:
+# ./tf.sh apply 01-bare-minimum
+
 # $1 plan, apply, refresh or destroy.
 # $2 staging, production.
 # $3 -auto-approve.

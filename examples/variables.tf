@@ -49,7 +49,7 @@ variable "test_cases" {
 
     ## OS
     tablet  = optional(bool)
-    boot    = optional(string, "order=scsi0;ide0;net0")
+    boot    = optional(string, "order=scsi0;net0")
     agent   = optional(number)
     qemu_os = optional(string)
     numa    = optional(bool)
