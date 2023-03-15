@@ -15,12 +15,12 @@ test_cases = {
       },
       "02" = {
         storage = "Ceph_Silver"
-        size    = "10G"
+        size    = "15G"
         cache   = "writeback"
       },
       "03" = {
         storage   = "Ceph_Bronze"
-        size      = "30G"
+        size      = "10G"
         ssd       = 0
         backup    = true
         replicate = 1
