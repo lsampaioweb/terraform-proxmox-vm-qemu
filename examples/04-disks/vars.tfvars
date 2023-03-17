@@ -3,7 +3,7 @@ test_cases = {
     # Required:
     target_node = "kvm-04"
     name        = "VM-Disks"
-    clone       = "ubuntu-22-04-server-raw"
+    clone       = "ubuntu-22-04-desktop-raw"
 
     # Optional:
     description = "VM with multiple disks."

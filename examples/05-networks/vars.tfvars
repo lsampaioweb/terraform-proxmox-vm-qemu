@@ -3,7 +3,7 @@ test_cases = {
     # Required:
     target_node = "kvm-05"
     name        = "VM-Networks"
-    clone       = "ubuntu-22-04-server-raw"
+    clone       = "ubuntu-22-04-desktop-standard"
 
     # Optional:
     description = "VM with multiple networks."

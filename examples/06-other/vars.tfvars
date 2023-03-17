@@ -3,7 +3,7 @@ test_cases = {
     # Required:
     target_node = "kvm-06"
     name        = "VM-Other-Values"
-    clone       = "ubuntu-22-04-server-raw"
+    clone       = "ubuntu-22-04-server-standard"
 
     # Optional:
     description = "VM with several different values."

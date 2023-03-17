@@ -23,6 +23,7 @@ variable "cloud_init" {
     # Format: [ip=<IPv4Format/CIDR>][,gw=<GatewayIPv4>][,ip6=<IPv6Format/CIDR>][,gw6=<GatewayIPv6>].
     # e.g: ip=dhcp
     # e.g: ip=10.0.4.4/27,gw=10.0.4.1
+    # Defaults to ip=dhcp.
     ipconfig0 = optional(string, "ip=dhcp")
     # The Nth IP address to assign to the guest. Same format as ipconfig0.
     ipconfig1 = optional(string)

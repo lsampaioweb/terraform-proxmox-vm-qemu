@@ -1,5 +1,5 @@
 variable "os_type" {
-  description = "Which provisioning method to use, based on the OS type. Options: ubuntu, centos and cloud-init. The default is cloud-init."
+  description = "Which provisioning method to use, based on the OS type. Options: ubuntu, centos and cloud-init.  Default to cloud-init."
   type        = string
   default     = "cloud-init"
   nullable    = false
@@ -16,14 +16,14 @@ variable "clone" {
 }
 
 variable "full_clone" {
-  description = "Set to true to create a full clone, or false to create a linked clone. Only applies when clone is set. The default is true."
+  description = "Set to true to create a full clone, or false to create a linked clone. Only applies when clone is set.  Default to true."
   type        = bool
   default     = true
   nullable    = false
 }
 
 variable "force_create" {
-  description = "If false, and a vm of the same name, on the same node exists, terraform will attempt to reconfigure that VM with these settings. Set to true to always create a new VM (note, the name of the VM must still be unique, otherwise an error will be produced.) The default is false."
+  description = "If false, and a vm of the same name, on the same node exists, terraform will attempt to reconfigure that VM with these settings. Set to true to always create a new VM (note, the name of the VM must still be unique, otherwise an error will be produced.)  Default to false."
   type        = bool
   default     = false
   nullable    = false

@@ -3,7 +3,7 @@ test_cases = {
     # Required:
     target_node = "kvm-03"
     name        = "VM-Static-IP"
-    clone       = "ubuntu-22-04-server-raw"
+    clone       = "ubuntu-22-04-server-std-docker"
 
     # Optional:
     description = "VM with Static IP on the default VLAN."

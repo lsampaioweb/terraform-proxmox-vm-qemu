@@ -1,12 +1,12 @@
 variable "hagroup" {
-  description = "The HA group identifier the resource belongs to (requires hastate to be set!)."
+  description = "The HA group identifier the resource belongs to (requires hastate to be set!). Default to empty."
   type        = string
   default     = ""
   nullable    = false
 }
 
 variable "hastate" {
-  description = "Requested HA state for the resource. Options: started, stopped, enabled, disabled, or ignored."
+  description = "Requested HA state for the resource. Options: started, stopped, enabled, disabled, or ignored. Default to ignored."
   type        = string
   default     = "ignored"
   nullable    = false

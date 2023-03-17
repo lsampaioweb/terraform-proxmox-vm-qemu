@@ -9,7 +9,7 @@ variable "name" {
 }
 
 variable "vmid" {
-  description = "The ID of the VM in Proxmox. The default value of 0 indicates it should use the next available ID in the sequence."
+  description = "The ID of the VM in Proxmox. The default value of 0 indicates it should use the next available ID in the sequence. Default to 0."
   type        = number
   default     = 0
   nullable    = false
@@ -28,40 +28,40 @@ variable "description" {
 }
 
 variable "bios" {
-  description = "The BIOS to use, options are seabios or ovmf for UEFI."
+  description = "The BIOS to use, options are seabios or ovmf for UEFI. Defaults to seabios."
   type        = string
   default     = "seabios"
   nullable    = false
 
   validation {
-    condition     = contains(["seabios", "ovmf"], var.bios)
+    condition     = contains(["", "seabios", "ovmf"], var.bios)
     error_message = "Valid values are seabios and ovmf."
   }
 }
 
 variable "onboot" {
-  description = "Whether to have the VM startup after the PVE node starts."
+  description = "Whether to have the VM startup after the PVE node starts. Default to true."
   type        = bool
   default     = true
   nullable    = false
 }
 
 variable "startup" {
-  description = "The startup and shutdown behaviour. Format: order=X,up=X,down=X"
+  description = "The startup and shutdown behaviour. Format: order=X,up=X,down=X. Default to empty."
   type        = string
   default     = ""
   nullable    = false
 }
 
 variable "oncreate" {
-  description = "Whether to have the VM startup after the VM is created."
+  description = "Whether to have the VM startup after the VM is created. Default to true."
   type        = bool
   default     = true
   nullable    = false
 }
 
 variable "pool" {
-  description = "Name of resource pool to create virtual machine in."
+  description = "Name of resource pool to create virtual machine in. Default to empty."
   type        = string
   default     = ""
   nullable    = false
