@@ -5,11 +5,11 @@ resource "proxmox_vm_qemu" "main" {
   target_node = var.target_node
   name        = var.name
   vmid        = var.vmid
-  desc        = var.description
   bios        = var.bios
   onboot      = var.onboot
   startup     = var.startup
   oncreate    = var.oncreate
+  desc        = var.description
   pool        = var.pool
 
   # Clone

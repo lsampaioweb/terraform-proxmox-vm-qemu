@@ -45,7 +45,7 @@ variable "test_cases" {
       ipconfig13              = optional(string)
       ipconfig14              = optional(string)
       ipconfig15              = optional(string)
-    }), {})
+    }))
 
     ## OS
     tablet  = optional(bool)

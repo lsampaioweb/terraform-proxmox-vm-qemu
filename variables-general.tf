@@ -20,13 +20,6 @@ variable "vmid" {
   }
 }
 
-variable "description" {
-  description = "The description of the VM. Shows as the 'Notes' field in the Proxmox GUI."
-  type        = string
-  default     = "VM created by Terraform."
-  nullable    = false
-}
-
 variable "bios" {
   description = "The BIOS to use, options are seabios or ovmf for UEFI. Defaults to seabios."
   type        = string
@@ -57,6 +50,13 @@ variable "oncreate" {
   description = "Whether to have the VM startup after the VM is created. Defaults to true."
   type        = bool
   default     = true
+  nullable    = false
+}
+
+variable "description" {
+  description = "The description of the VM. Shows as the 'Notes' field in the Proxmox GUI."
+  type        = string
+  default     = "VM created by Terraform."
   nullable    = false
 }
 
