@@ -10,12 +10,16 @@ test_cases = {
 
     networks = {
       "01" = {
-        bridge   = "vmbr0"
-        tag      = 4
-        firewall = true
       },
       "02" = {
-        tag = 100
+        bridge = "vmbr0"
+        tag    = 4
+      },
+      "03" = {
+        bridge   = "vmbr1"
+        tag      = 100
+        firewall = true
+        macaddr  = "F2:30:89:8C:02:51"
       }
     }
 

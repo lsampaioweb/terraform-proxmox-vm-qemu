@@ -10,15 +10,16 @@ test_cases = {
 
     disks = {
       "01" = {
-        storage = "Ceph_Gold"
-        size    = "20G"
       },
       "02" = {
+        storage = "Ceph_Gold"
+      },
+      "03" = {
         storage = "Ceph_Silver"
         size    = "15G"
         cache   = "writeback"
       },
-      "03" = {
+      "04" = {
         storage   = "Ceph_Bronze"
         size      = "10G"
         ssd       = 0
