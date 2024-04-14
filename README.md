@@ -40,12 +40,11 @@ Run these commands on the computer (Linux) that is running Terraform:
 # Complete Projects
 
 1. [Load Balancer](https://github.com/lsampaioweb/load-balancer) - Repository with scripts to setup an Ubuntu server with Traefik installed.
-1. [Firewall](https://github.com/lsampaioweb/firewall) - Repository with scripts to setup a pfSense firewall.
 
 # License:
 
 [MIT](LICENSE "MIT License")
 
-# Created by: 
+# Created by:
 
 1. Luciano Sampaio.
