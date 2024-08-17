@@ -7,6 +7,9 @@ variable "disks" {
       scsi0 = {
         disk = [{}]
       }
+      scsi10 = {
+        cloudinit = [{}]
+      }
     }
   }
 

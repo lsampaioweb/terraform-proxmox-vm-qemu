@@ -4,6 +4,7 @@ test_cases = {
     target_node = "edge-pve-01"
     name        = "VM-Networks"
     clone       = "ubuntu-24-04-desktop-standard"
+    full_clone  = false
 
     # Optional:
     description = "VM with multiple networks."
@@ -12,8 +13,7 @@ test_cases = {
       "01" = {
       },
       "02" = {
-        bridge = "vmbr2"
-        tag    = 100
+        bridge = "vmbr100"
       },
       "03" = {
         bridge   = "vmbr2"

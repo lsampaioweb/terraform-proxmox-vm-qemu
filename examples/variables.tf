@@ -35,9 +35,9 @@ variable "test_cases" {
     }))
 
     ## CPU
-    cpu     = optional(string, "x86-64-v2-AES")
-    sockets = optional(number, 1)
-    cores   = optional(number, 6)
+    cpu     = optional(string)
+    sockets = optional(number)
+    cores   = optional(number, 4)
     vcpus   = optional(number, 2)
 
     ## Memory
@@ -59,8 +59,8 @@ variable "test_cases" {
     })
 
     ## High Availability
-    hagroup = optional(string, "default")
-    hastate = optional(string, "started")
+    hagroup = optional(string)
+    hastate = optional(string)
 
     ## Hard Disk
     disks = optional(object({

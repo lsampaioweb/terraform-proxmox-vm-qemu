@@ -3,7 +3,7 @@ test_cases = {
     # Required:
     target_node = "edge-pve-01"
     name        = "VM-Static-IP"
-    clone       = "ubuntu-24-04-server-std-docker"
+    clone       = "ubuntu-24-04-server-standard"
 
     # Optional:
     description = "VM with Static IP on the default VLAN."

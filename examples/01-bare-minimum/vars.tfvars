@@ -3,6 +3,12 @@ test_cases = {
     # Required:
     target_node = "edge-pve-01"
     name        = "VM-Bare-Minimum"
-    clone       = "ubuntu-24-04-server-raw"
+    clone       = "ubuntu-24-04-server-standard"
+
+    # cloud_init = {
+    #   ciuser     = "<user>"
+    #   cipassword = "<password>"
+    # }
   }
+
 }
