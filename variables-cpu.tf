@@ -1,7 +1,7 @@
 variable "cpu" {
-  description = "The CPU type to emulate. Defaults to host."
+  description = "The CPU type to emulate. Defaults to x86-64-v2-AES."
   type        = string
-  default     = "host"
+  default     = "x86-64-v2-AES"
   nullable    = false
 }
 

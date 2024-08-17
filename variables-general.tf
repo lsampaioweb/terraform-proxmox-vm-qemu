@@ -46,10 +46,17 @@ variable "startup" {
   nullable    = false
 }
 
-variable "oncreate" {
-  description = "Whether to have the VM startup after the VM is created. Defaults to true."
+variable "vm_state" {
+  description = "The desired state of the VM, options are running, stopped and started. Do note that started will only start the vm on creation and won't fully manage the power state unlike running and stopped do."
+  type        = string
+  default     = "running"
+  nullable    = false
+}
+
+variable "protection" {
+  description = "Enable/disable the VM protection from being removed. The default value of false indicates the VM is removable."
   type        = bool
-  default     = true
+  default     = false
   nullable    = false
 }
 

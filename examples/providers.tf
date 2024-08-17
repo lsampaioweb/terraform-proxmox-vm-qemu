@@ -1,14 +1,15 @@
 terraform {
   required_providers {
     proxmox = {
+      # https://registry.terraform.io/providers/Telmate/proxmox/latest
       source  = "Telmate/proxmox"
-      version = "2.9.14"
+      version = "3.0.1-rc3"
     }
   }
 }
 
 provider "proxmox" {
-  pm_api_url      = "https://kvm.lan.homelab:8006/api2/json"
+  pm_api_url      = "https://edge-pve-01.lan.homelab:8006/api2/json"
   pm_api_token_id = "terraform@pve!terraform"
 
   # pm_log_enable = true

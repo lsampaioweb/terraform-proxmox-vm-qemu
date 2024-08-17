@@ -7,11 +7,11 @@ module "project" {
   target_node = each.value.target_node
   name        = each.value.name
   vmid        = each.value.vmid
-  description = each.value.description
   bios        = each.value.bios
   onboot      = each.value.onboot
   startup     = each.value.startup
-  oncreate    = each.value.oncreate
+  vm_state    = each.value.vm_state
+  description = each.value.description
   pool        = each.value.pool
 
   # Clone
@@ -20,7 +20,7 @@ module "project" {
   full_clone   = each.value.full_clone
   force_create = each.value.force_create
 
-  # OS  
+  # OS
   tablet  = each.value.tablet
   boot    = each.value.boot
   agent   = each.value.agent
@@ -38,11 +38,8 @@ module "project" {
   vcpus   = each.value.vcpus
 
   # Memory
-  balloon = each.value.balloon
   memory  = each.value.memory
-
-  # Hard Disk
-  disks = each.value.disks
+  balloon = each.value.balloon
 
   # Networks
   define_connection_info = each.value.define_connection_info
@@ -53,5 +50,9 @@ module "project" {
   hagroup = each.value.hagroup
   hastate = each.value.hastate
 
+  # Hard Disk
+  disks = each.value.disks
+
+  # Cloud-Init
   cloud_init = each.value.cloud_init
 }

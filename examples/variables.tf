@@ -7,10 +7,11 @@ variable "test_cases" {
     name        = string
     vmid        = optional(number)
     bios        = optional(string)
-    description = optional(string)
     onboot      = optional(bool)
     startup     = optional(string)
-    oncreate    = optional(bool)
+    vm_state    = optional(string)
+    protection  = optional(bool)
+    description = optional(string)
     pool        = optional(string)
 
     ## Clone
@@ -18,34 +19,6 @@ variable "test_cases" {
     clone        = string
     full_clone   = optional(bool)
     force_create = optional(bool)
-
-    ## Cloud Init
-    cloud_init = optional(object({
-      cicustom                = optional(string)
-      cloudinit_cdrom_storage = optional(string)
-      ciuser                  = optional(string)
-      ci_wait                 = optional(number)
-      cipassword              = optional(string)
-      searchdomain            = optional(string)
-      nameserver              = optional(string)
-      sshkeys                 = optional(string)
-      ipconfig0               = optional(string)
-      ipconfig1               = optional(string)
-      ipconfig2               = optional(string)
-      ipconfig3               = optional(string)
-      ipconfig4               = optional(string)
-      ipconfig5               = optional(string)
-      ipconfig6               = optional(string)
-      ipconfig7               = optional(string)
-      ipconfig8               = optional(string)
-      ipconfig9               = optional(string)
-      ipconfig10              = optional(string)
-      ipconfig11              = optional(string)
-      ipconfig12              = optional(string)
-      ipconfig13              = optional(string)
-      ipconfig14              = optional(string)
-      ipconfig15              = optional(string)
-    }))
 
     ## OS
     tablet  = optional(bool)
@@ -62,30 +35,14 @@ variable "test_cases" {
     }))
 
     ## CPU
-    cpu     = optional(string, "kvm64")
+    cpu     = optional(string, "x86-64-v2-AES")
     sockets = optional(number, 1)
     cores   = optional(number, 6)
     vcpus   = optional(number, 2)
 
     ## Memory
-    balloon = optional(number, 1024)
     memory  = optional(number, 3072)
-
-    ## Hard Disk
-    disks = optional(map(object({
-      type      = optional(string)
-      storage   = optional(string, "Ceph_Gold")
-      size      = optional(string)
-      format    = optional(string)
-      cache     = optional(string)
-      backup    = optional(bool)
-      iothread  = optional(number)
-      replicate = optional(number)
-      ssd       = optional(number)
-      discard   = optional(string)
-      })), {
-      "01" = {}
-    })
+    balloon = optional(number, 1024)
 
     ## Networks
     define_connection_info = optional(bool)
@@ -104,5 +61,105 @@ variable "test_cases" {
     ## High Availability
     hagroup = optional(string, "default")
     hastate = optional(string, "started")
+
+    ## Hard Disk
+    disks = optional(object({
+      scsi = object({
+        # disk0 (required)
+        scsi0 = object({
+          disk = list(object({
+            backup     = optional(bool)
+            cache      = optional(string)
+            discard    = optional(bool)
+            emulatessd = optional(bool)
+            format     = optional(string)
+            iothread   = optional(bool)
+            replicate  = optional(bool)
+            size       = optional(string)
+            storage    = optional(string)
+          }))
+        })
+
+        # disk1 (optional)
+        scsi1 = optional(object({
+          disk = optional(list(object({
+            backup     = optional(bool)
+            cache      = optional(string)
+            discard    = optional(bool)
+            emulatessd = optional(bool)
+            format     = optional(string)
+            iothread   = optional(bool)
+            replicate  = optional(bool)
+            size       = optional(string)
+            storage    = optional(string)
+          })), [])
+        }), {})
+
+        # disk2 (optional)
+        scsi2 = optional(object({
+          disk = optional(list(object({
+            backup     = optional(bool)
+            cache      = optional(string)
+            discard    = optional(bool)
+            emulatessd = optional(bool)
+            format     = optional(string)
+            iothread   = optional(bool)
+            replicate  = optional(bool)
+            size       = optional(string)
+            storage    = optional(string)
+          })), [])
+        }), {})
+
+        # disk3 (optional)
+        scsi3 = optional(object({
+          disk = optional(list(object({
+            backup     = optional(bool)
+            cache      = optional(string)
+            discard    = optional(bool)
+            emulatessd = optional(bool)
+            format     = optional(string)
+            iothread   = optional(bool)
+            replicate  = optional(bool)
+            size       = optional(string)
+            storage    = optional(string)
+          })), [])
+        }), {})
+
+        # init-cloud drive (optional)
+        scsi10 = optional(object({
+          cloudinit = optional(list(object({
+            storage = optional(string)
+          })), [])
+        }), {})
+
+      })
+    }))
+
+    ## Cloud Init
+    cloud_init = optional(object({
+      cicustom     = optional(string)
+      ciuser       = optional(string)
+      ci_wait      = optional(number)
+      cipassword   = optional(string)
+      searchdomain = optional(string)
+      nameserver   = optional(string)
+      sshkeys      = optional(string)
+      ipconfig0    = optional(string)
+      ipconfig1    = optional(string)
+      ipconfig2    = optional(string)
+      ipconfig3    = optional(string)
+      ipconfig4    = optional(string)
+      ipconfig5    = optional(string)
+      ipconfig6    = optional(string)
+      ipconfig7    = optional(string)
+      ipconfig8    = optional(string)
+      ipconfig9    = optional(string)
+      ipconfig10   = optional(string)
+      ipconfig11   = optional(string)
+      ipconfig12   = optional(string)
+      ipconfig13   = optional(string)
+      ipconfig14   = optional(string)
+      ipconfig15   = optional(string)
+    }))
   }))
 }

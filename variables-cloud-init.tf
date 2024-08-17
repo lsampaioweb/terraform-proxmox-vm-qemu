@@ -5,8 +5,6 @@ variable "cloud_init" {
   type = object({
     # Instead specifying ciuser, cipasword, etc… you can specify the path to a custom cloud-init config file here. Grants more flexibility in configuring cloud-init.
     cicustom = optional(string)
-    # Set the storage location for the cloud-init drive. Required when specifying cicustom.
-    cloudinit_cdrom_storage = optional(string)
     # Override the default cloud-init user for provisioning.
     ciuser = optional(string)
     # How to long in seconds to wait for before provisioning.
@@ -19,7 +17,7 @@ variable "cloud_init" {
     nameserver = optional(string)
     # Newline delimited list of SSH public keys to add to authorized keys file for the cloud-init user.
     sshkeys = optional(string)
-    # The first IP address to assign to the guest. 
+    # The first IP address to assign to the guest.
     # Format: [ip=<IPv4Format/CIDR>][,gw=<GatewayIPv4>][,ip6=<IPv6Format/CIDR>][,gw6=<GatewayIPv6>].
     # e.g: ip=dhcp
     # e.g: ip=10.0.4.4/27,gw=10.0.4.1
