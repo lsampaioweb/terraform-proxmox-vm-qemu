@@ -1,7 +1,10 @@
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
 # Terraform hidden files should not be committed to Git.
 *.terraform*
 *.tfstate*
 *.log
-
-# MacOSX files.
-.DS_Store
