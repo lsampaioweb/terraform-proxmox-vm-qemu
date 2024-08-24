@@ -53,7 +53,7 @@ variable "scsihw" {
 }
 
 variable "tags" {
-  description = "Tags of the VM. This is only meta information. Defaults to empty."
+  description = "Tags of the VM. Comma-separated values (e.g. tag1,tag2,tag3). Tag may only include the following characters: [a-z], [0-9] and _. This is only meta information. Defaults to empty."
   type        = string
   default     = ""
   nullable    = false
