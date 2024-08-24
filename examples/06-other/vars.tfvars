@@ -4,9 +4,9 @@ test_cases = {
     target_node = "edge-pve-02"
     name        = "VM-Other-Values"
     clone       = "ubuntu-24-04-server-standard"
-    full_clone  = false
 
     # Optional:
+    full_clone  = false
     description = "VM with several different values."
     vmid        = 1234
     startup     = "order=10"
