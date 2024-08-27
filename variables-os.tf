@@ -60,7 +60,7 @@ variable "tags" {
 }
 
 variable "vga" {
-  description = "Type: The type of display to virtualize. Options: std, cirrus, none, qxl, qxl2, qxl3, qxl4, serial0, serial1, serial2, serial3, virtio, vmware. Memory: Sets the VGA memory (in MiB). Has no effect with serial display type. Defaults to std and 16M."
+  description = "Type: The type of display to virtualize. Options: std, cirrus, qxl, qxl2, qxl3, qxl4, none, serial0, serial1, serial2, serial3, virtio, virtio-gl, vmware. Memory: Sets the VGA memory (in MiB). Has no effect with serial display type. Defaults to std and 16M."
   type = object({
     type   = optional(string, "std")
     memory = optional(number, 16)
@@ -69,7 +69,7 @@ variable "vga" {
   nullable = false
 
   validation {
-    condition     = contains(["std", "cirrus", "none", "qxl", "qxl2", "qxl3", "qxl4", "serial0", "serial1", "serial2", "serial3", "virtio", "vmware"], var.vga.type)
+    condition     = contains(["std", "cirrus", "none", "qxl", "qxl2", "qxl3", "qxl4", "serial0", "serial1", "serial2", "serial3", "virtio", "virtio-gl", "vmware"], var.vga.type)
     error_message = "Valid values are std, cirrus, none, qxl, qxl2, qxl3, qxl4, serial0, serial1, serial2, serial3, virtio and vmware."
   }
 
