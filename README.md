@@ -37,6 +37,13 @@ Run these commands on the computer (Linux) that is running Terraform:
     source ~/.bashrc
 ```
 
+Create a release to be imported into other Terraform projects:
+```bash
+  git tag
+  git tag -a 1.0.15 -m "Release version 1.0.15"
+  git push --tags
+```
+
 #
 ### Complete Projects
 
