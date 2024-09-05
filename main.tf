@@ -186,6 +186,6 @@ resource "proxmox_vm_qemu" "main" {
   lifecycle {
     create_before_destroy = true
 
-    ignore_changes = [target_node, pool, ciuser]
+    ignore_changes = [target_node]
   }
 }
