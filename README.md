@@ -40,7 +40,7 @@ Run these commands on the computer (Linux) that is running Terraform:
 Create a release to be imported into other Terraform projects:
 ```bash
   git tag
-  git tag -a 1.0.17 -m "Release version 1.0.17"
+  git tag -a 1.0.18 -m "feat: Enhance output with additional VM attributes."
   git push --tags
 ```
 
