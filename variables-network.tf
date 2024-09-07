@@ -20,7 +20,7 @@ variable "networks" {
   nullable = false
   type = map(object({
     # Required. Bridge to which the network device should be attached. The Proxmox VE standard bridge is called vmbr0. Defaults to vmbr0.
-    bridge = optional(string, "vmbr101")
+    bridge = optional(string, "vmbr2")
     # Required. Network Card Model. The virtio model provides the best performance with very low CPU overhead. If your guest does not support this driver, it is usually best to use e1000. Options: virtio, e1000, e1000-82540em, e1000-82544gc, e1000-82545em, i82551, i82557b, i82559er, ne2k_isa, ne2k_pci, pcnet, rtl8139, vmxnet3. Defaults to virtio.
     model = optional(string, "virtio")
     # The VLAN tag to apply to packets on this device. -1 disables VLAN tagging.
