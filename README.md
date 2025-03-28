@@ -94,10 +94,15 @@ module "vm_qemu" {
     | VM.PowerMgmt                     | Allows VM start, stop, reboot, shutdown operations.                         |
     | SDN.Use                          | Grants permission to use Software Defined Networking (SDN) resources.       |
 
-1. Set the role to the user and API Token
+1. Set the role to the user
 
     ```bash
     pveum acl modify / -user terraform@pve -role Terraform
+    ```
+
+1. Set the role to the API Token
+
+    ```bash
     pveum acl modify / -token 'terraform@pve!terraform' -role Terraform
     ```
 
