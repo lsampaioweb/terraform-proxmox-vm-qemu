@@ -1,13 +1,37 @@
 #!/bin/bash
-set -e # Abort if there is an issue with any build.
+set -e
 
-# Usage:
-# ./tf.sh apply 01-bare-minimum
+# Usage: ./tf.sh apply 01-bare-minimum -auto-approve
 
-# $1 plan, apply, refresh or destroy.
-# $2 home, homelab.
-# $3 -auto-approve.
+COMMAND=$1
+ENV_NAME=$2
+EXTRA_FLAGS=$3
 
+if [[ -z "$COMMAND" || -z "$ENV_NAME" ]]; then
+  echo "Usage: $0 <plan|apply|destroy> <env-name> [-auto-approve]"
+  exit 1
+fi
+
+# Desired backend configuration.
+BACKEND_CONTENT=$(cat <<EOF
+terraform {
+  backend "local" {
+    path = "$ENV_NAME/terraform.tfstate"
+  }
+}
+EOF
+)
+
+# Check and update backend.tf only if needed.
+if [[ ! -f backend.tf ]] || [[ "$BACKEND_CONTENT" != "$(cat backend.tf)" ]]; then
+  echo "$BACKEND_CONTENT" > backend.tf
+  echo "[INFO] Backend configuration changed. Running terraform init..."
+
+  terraform init -reconfigure
+fi
+
+# Format project recursively.
 terraform fmt -recursive ../.
 
-terraform $1 $3 -var-file=$2/vars.tfvars -state=$2/terraform.tfstate
+# Execute Terraform command.
+terraform "$COMMAND" $EXTRA_FLAGS -var-file="$ENV_NAME/vars.tfvars"

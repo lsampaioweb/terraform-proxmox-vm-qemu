@@ -1,21 +1,39 @@
 #!/bin/bash
-set -e # Abort if there is an issue with any build.
+set -e  # Abort if there is an issue with any command.
 
 # Usage:
 # ./run-all.sh apply
 # ./run-all.sh destroy
 
-runningTerraformApply() {
-  echo "Running $1 $2"
-  
-  ./tf.sh $1 $2 -auto-approve
+ACTION=$1
+
+if [[ -z "$ACTION" ]]; then
+  echo "Usage: $0 <apply|destroy>"
+  exit 1
+fi
+
+ENVIRONMENTS=(
+  01-bare-minimum
+  02-dhcp
+  03-static-ip
+  04-disks
+  05-networks
+  06-other
+)
+
+runTerraform() {
+  local action=$1
+  local env=$2
+
+  echo "====================================="
+  echo " Running: $action on $env"
+  echo "====================================="
+
+  ./tf.sh "$action" "$env" -auto-approve
 
   echo ""
 }
 
-runningTerraformApply $1 01-bare-minimum
-runningTerraformApply $1 02-dhcp
-runningTerraformApply $1 03-static-ip
-runningTerraformApply $1 04-disks
-runningTerraformApply $1 05-networks
-runningTerraformApply $1 06-other
+for env in "${ENVIRONMENTS[@]}"; do
+  runTerraform "$ACTION" "$env"
+done
